@@ -15,13 +15,18 @@ def main():
     
     @app.route('/random' , methods=['GET'])
     def random():
-        return redirect( '/search/{}'.format( db.getRandomId() ) )
+        return redirect( f'/movie/{ db.getRandomId() }' )
     
+    @app.route('/movie/<id>' , methods=['GET'])
+    def movie(id):
+        return render_template('movie.html' , info= db.getMovieById( int(id) )  )#jsonify( db.getMovieById(int(movie) ) )
+    
+
     @app.route('/search/<movie>' , methods=['GET'])
-    def find_movie(movie):
-        
-        return jsonify( db.getMovieById(movie) )
-    
+    def find_movie(movie:str):
+        aux = db.getIdByTitle( movie )
+        return redirect( f'/movie/{aux}')    
+
     app.run( port = PORT , debug = True )
     
 
