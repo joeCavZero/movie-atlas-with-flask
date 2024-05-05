@@ -7,13 +7,22 @@
 
         <table class="center" border=1>
             <tr>
-                <th>Release date</th><th>{{info['Release_Date'] }}</th>
+                <td>Release date</td><td>{{info['Release_Date'] }}</td>
             </tr>
             <tr>
-                <th>Language</th><th>{{info['Language'] }}
+                <td>Language</td><td>{{info['Language'] }}</td>
             </tr>
             <tr>
-                <th>Certification</th><th>{{info['Certification'] }}
+                <td>Genre</td>
+                <td>
+                    {% set aux = info['Genres'].replace("'","").replace("[","").replace("]","").split(',') %}
+                    {% for i in aux %}
+                        {{i}}<br>
+                    {%endfor%}
+                </td>
+            </tr>
+            <tr>
+                <td>Certification</td><td>{{info['Certification'] }}</td>
             </tr>
         </table>
     </main>

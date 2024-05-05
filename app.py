@@ -19,7 +19,7 @@ def main():
     
     @app.route('/movie/<id>' , methods=['GET'])
     def movie(id):
-        return render_template('movie.html' , info= db.getMovieById( int(id) )  )#jsonify( db.getMovieById(int(movie) ) )
+        return render_template('movie.html' , info= db.getMovieById( int(id) ) ) 
     
 
     @app.route('/search/<movie>' , methods=['GET'])
